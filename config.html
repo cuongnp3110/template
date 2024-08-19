@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .date-greet {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .avt-block {
+            display: flex;
+            align-items: center;
+        }
+
+        .avt {
+            width: 30px;
+            height: 30px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 1px solid wheat;
+        }
+
+        .device {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            overflow-y: auto;
+            padding: 10px 20px 70px;
+        }
+
+        .device-card {
+            width: calc(100% - 20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            height: 100px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid silver;
+        }
+
+        .add-device-card {
+            width: calc(100% - 20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            height: 100px;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgb(156, 156, 156);
+            border-style: dashed;
+        }
+
+        .device-name {
+            font-size: 14px;
+        }
+
+        .add-device-name {
+            font-size: 12px;
+            color: rgb(156, 156, 156);
+        }
+
+        .device-device {
+            font-size: 10px;
+        }
+
+        .footer {
+            position: fixed;
+            text-align: center;
+            width: 100%;
+            padding: 15px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            bottom: 0;
+            text-decoration: none;
+            background: white;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background-color: #ffebdc;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .slider-container,
+        .switch-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider {
+            width: 150px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-switch {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider-switch:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-switch {
+            background-color: #ff6f00;
+        }
+
+        input:checked + .slider-switch:before {
+            transform: translateX(20px);
+        }
+        .device-name-popup {
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            box-sizing:border-box;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button {
+            background-color: #ff6f00;
+            color: white;
+        }
+
+        .cancel-button {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="date-greet">
+                <strong style="font-size:18px; margin-top: 4px">Area</strong>
+            </div>
+            <div class="avt-block">
+                <div class="avt">
+                    <!-- AVT -->
+                </div>
+            </div>
+        </div>
+        <div class="device">
+            <div class="device-card">
+                <strong class="device-name" style="font-size: 12px;">Device name</strong>
+            </div>
+            <div class="device-card">
+                <strong class="device-name" style="font-size: 12px;">Device name</strong>
+            </div>
+            <div class="device-card">
+                <strong class="device-name" style="font-size: 12px;">Device name</strong>
+            </div>
+            <div class="device-card">
+                <strong class="device-name" style="font-size: 12px;">Device name</strong>
+            </div>
+            <div class="add-device-card">
+                <strong class="add-device-name">Add New Device</strong>
+            </div>
+        </div>
+    </div>
+    <a href="index.html" class="footer">
+        Back
+    </a>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="device-name-popup">Device Name</div>
+            <div class="slider-container">
+                <label for="temp-slider">Temperature:</label>
+                <input type="range" id="temp-slider" class="slider" min="16" max="30" value="22">
+                <span id="temp-value">22°C</span>
+            </div>
+
+            <div class="switch-container">
+                <label for="light-switch">Light:</label>
+                <label class="switch">
+                    <input type="checkbox" id="light-switch">
+                    <span class="slider-switch"></span>
+                </label>
+            </div>
+
+            <div class="button-container">
+                <button class="button cancel-button">Cancel</button>
+                <button id="submitBtn" class="button submit-button">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const deviceCards = document.querySelectorAll('.device-card');
+        const popup = document.getElementById('popup');
+        const tempSlider = document.getElementById('temp-slider');
+        const tempValue = document.getElementById('temp-value');
+        const submitBtn = document.getElementById('submitBtn');
+        const cancelButton = document.querySelector('.cancel-button');
+
+        deviceCards.forEach(card => {
+            card.addEventListener('click', () => {
+                popup.style.display = 'block';
+            });
+        });
+
+        tempSlider.addEventListener('input', () => {
+            tempValue.textContent = `${tempSlider.value}°C`;
+        });
+
+        submitBtn.addEventListener('click', () => {
+            const temperature = document.getElementById('temp-slider').value;
+            const lightOn = document.getElementById('light-switch').checked;
+            alert(`Temperature: ${temperature}°C\nLight: ${lightOn ? 'On' : 'Off'}`);
+        });
+
+        // Close popup when clicking the Cancel button
+        cancelButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // Close popup when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (!popup.contains(e.target) && !Array.from(deviceCards).some(card => card.contains(e.target))) {
+                popup.style.display = 'none';
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
